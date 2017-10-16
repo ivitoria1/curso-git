@@ -1,0 +1,151 @@
+Comando do GIT
+
+git tag 
+  -> Verificar todas as tag do projeto
+  
+git blame <nome do arquivo>
+  -> Mostrar as alterações nos arquivos 
+
+git checkpou v0.1 
+  -> Isso mesmo! A opção checkout altera seu repositório local 
+fazendo com que seus arquivos fiquem no mesmo estado em que estavam quando a tag v0.1 foram criados!
+
+git diff v0.1 v0.2 
+  -> vemos as alterações entre uma versão e a outra. 
+  
+  
+Ciclo de Vida 
+
+- Git init 
+  -> Inicializar o controle de versão do repositório  
+  
+- git ls-files
+  ->  Informa os arquivos controlados pelo git
+  
+- git status
+  -> Mostra o status atual do git
+
+- git add <nome-do-arquivo>
+  -> Add os arquivos ou as mudanças dos arquivos no controle de versão do GIT
+
+- git add . 
+ -> Add todos os arquivos do diretorio no controle de versão
+
+- git add -i 
+ -> Add arquivos no modo interativo
+ 
+- git commit -m "<mensagem>"  
+  -> Atualiza os arquivos no controle de versão do GIT
+
+  
+- git log 
+- git whatchanged   
+- git whatchanged -p
+  -> Comando para verificar a lista de commit do repositório .
+  -> E também verificar quais linhas foram modificadas em cada commit.
+  
+-----------------------------------------------------------------------------
+
+- Branch
+
+-> listar os branch
+    - git branch
+
+-> Criar um branch
+    - git branch design
+
+-> Mudar de branch
+    - git checkout design
+
+-> Criar e Mudar de branch
+    - git checkout -b <nome da branch>	
+	
+-----------------------------------------------------------------------------------
+O comando " git checkout -t origin/design "	faz:
+
+Criação de uma branch local com o mesmo nome da branch remota
+Mudança para essa nova branch criada
+Criação de link entre a branch local e remota
+  
+-------------------------------------------------------------------
+
+Este comando remove a branch remota design.
+
+git push -d origin design
+git push origin :design
+
+-----------------------------
+
+Este comando verifica todas as atualizações que foram realizadas no repositório de atalho origin.
+
+git fetch origin
+
+------------------------------
+
+Este comando cria uma nova branch chamada origin, o que pode criar confusão 
+com o nome do repositório remoto.
+
+git branch origin
+
+-------------------------------
+
+Este comando muda o local de trabalho para a branch chamada origin, 
+o que pode criar confusão com o nome do repositório remoto.
+
+git checkout origin
+
+-------------------------------
+
+O comando git mergetool --tool-help mostra no console uma lista de programas possíveis de ser 
+utilizados. Dessa lista, pode-se escolher um, instalar no seu computador e utilizar através do 
+comando git mergetool -t nome_do_programa.
+
+---------------------------------------
+
+git rebase --continue , abort , skip
+
+Correto. Podemos continuar um rebase a partir do ponto de conflito, abortar o rebase e 
+voltar ao estado original ou pular o conflito para lidar com ele mais pra frente.
+--continue deve ser utilizado após a resolução manual de conflitos; 
+--skip faz com que suas alterações sejam descartadas; 
+--abort volta atrás em todo o processo de rebase
+
+----------------------------------------
+
+git bisect
+- Comando para verificar se o commit esta bom (good) ou ruim (bad).
+git bisect start
+git bisect bad HEAD (o commit ruim)
+git bisect good <codigo do commit> (o commit possivelmente bom)
+
+E a cada commit classifica se eh bad ou good.
+Até achar o commit good.
+
+--------------------------------------------
+
+Ao realizarmos o comando git reset HEAD index.html, as alterações no arquivo 
+index.html que estão no index serão revertidas para o working directory.
+
+-----------------------------------------------
+
+git reset HEAD~1 (Resetar o penultimo commit)
+
+Ao digitarmos HEAD~ seguido de um número inteiro n, será feita uma referência ao n-ésimo 
+commit anterior ao HEAD. Por exemplo, HEAD~1, faz referência ao penúltimo commit e 
+HEAD~2, ao antepenúltimo. No caso específico do penúltimo commit, também pode-se 
+referenciá-lo utilizando o atalho HEAD^.
+
+-----------------------------------------------
+Comando para colocar as alterações em um diretorio temporario
+
+ - git stash.
+
+Buscar as alterações desse diretorio
+ - git stash pop - busca e tenta apagar / ( git stash apply - busca as alterações )
+ 
+Remover as alterações desse diretorio
+ - git stash drop ( git stash clear ) 
+  
+Commitar pela uma alteração no GIT , utiliza o cherry-pick
+git cherry-pick <codigo_do_commit>     
+  
